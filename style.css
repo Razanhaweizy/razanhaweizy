@@ -16,7 +16,11 @@ li, a, button {
     text-decoration: none;
 }
 
-/*Styling for header*/
+h4 {
+    color: #64ffda;
+}
+
+/* Header */
 
 header {
     display: flex;
@@ -57,4 +61,84 @@ button {
 
 button:hover {
     background-color: #2a486b;
+}
+
+/* About section */
+
+.boxlayout {
+    color: #64ffda;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 10%;
+    gap: 10px;
+    border: solid 1px #1e3557;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    max-width: 80%;
+    margin: auto; 
+}
+
+/* Education */
+
+.courses {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px; 
+    margin-top: 20px; 
+    justify-content: center; 
+}
+
+.courses button {
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #1e3557;
+    color: #64ffda;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-family: "Inconsolata", sans-serif;
+}
+
+.courses button:hover {
+    background-color: #2a486b;
+    color: #ffffff;
+}
+
+/* In-Class Projects */
+
+.classprojects {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping of items */
+    justify-content: space-between; /* Ensures space between items */
+    margin: 100px auto;
+    padding: 0 20px;
+    max-width: 1000px;
+}
+
+.classproject {
+    background-color: var(--light-navy);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin: 20px;
+    width: calc(33% - 40px); /* Ensures that each project takes 1/3rd of the container */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.classproject:hover {
+    transform: translateY(-10px);
+}
+
+@media (max-width: 768px) {
+    .classproject {
+        width: calc(50% - 40px); /* Adjusts to 2 projects per row on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .classproject {
+        width: 100%; /* Stacks projects vertically on smaller screens */
+    }
 }
