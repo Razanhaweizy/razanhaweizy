@@ -1,4 +1,4 @@
-## Hi there 👋
+## My personal portfolio including projects, experience, education, etc.. :)
 
 <!--
 **Razanhaweizy/razanhaweizy** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
