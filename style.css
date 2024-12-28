@@ -110,35 +110,48 @@ button:hover {
 
 .classprojects {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Flexible grid layout */
-    gap: 20px; /* Add spacing between cards */
-    padding: 20px; /* Ensure padding around the grid */
-    max-width: 1200px; /* Optional: Set a max width for alignment */
-    margin: auto; /* Center the grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px; 
+    padding: 20px; 
+    max-width: 1200px;
+    margin: auto; 
     color: #64ffda;
 }
 
 .classproject {
     padding: 20px;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
     color: #64ffda; /* Text color */
+    background-color: #112240;
 }
 
 .classproject h4 {
-    font-size: 20px; /* Adjust font size */
-    margin-bottom: 10px; /* Space below the title */
+    font-size: 20px; 
+    margin-bottom: 10px; 
     color: #64ffda;
+    background-color: #112240;
 }
 
 .classproject p {
-    font-size: 14px; /* Smaller description text */
-    line-height: 1.5; /* Better readability */
-    color: #a8b2d1; /* Softer text color */
+    font-size: 14px; 
+    line-height: 1.5; 
+    color: #a8b2d1; 
+    background-color: #112240;
 }
 
 .classproject:hover {
-    transform: translateY(-10px); /* Lift effect on hover */
-    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+    transform: translateY(-10px); 
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.4); 
+}
+
+.projectlayout .layoutp {
+    color: #64ffda;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 30px auto 20px; /* Centers the h4 and adds vertical space */
+    text-align: center; /* Ensures the text is centered */
+    max-width: 80%; /* Ensures the text doesn't stretch too wide */
+    line-height: 1.5;
+    font-size: 16px;
 }
