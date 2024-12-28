@@ -79,6 +79,10 @@ button:hover {
     margin-bottom: 40px; /* Adjust the value as needed */
 }
 
+#about {
+    color: #a8b2d1;
+}
+
 /* Education */
 
 .courses {
@@ -96,7 +100,7 @@ button:hover {
     background-color: #1e3557;
     color: #64ffda;
     border: none;
-    cursor: pointer;
+    cursor: default;
     transition: all 0.3s ease-in-out;
     font-family: "Inconsolata", sans-serif;
 }
@@ -149,9 +153,9 @@ button:hover {
     color: #64ffda;
     font-size: 20px;
     font-weight: bold;
-    margin: 30px auto 20px; /* Centers the h4 and adds vertical space */
-    text-align: center; /* Ensures the text is centered */
-    max-width: 80%; /* Ensures the text doesn't stretch too wide */
+    margin: 30px auto 20px;
+    text-align: center;
+    max-width: 80%;
     line-height: 1.5;
     font-size: 16px;
 }
