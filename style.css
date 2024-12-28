@@ -76,6 +76,7 @@ button:hover {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
     max-width: 80%;
     margin: auto; 
+    margin-bottom: 40px; /* Adjust the value as needed */
 }
 
 /* Education */
@@ -108,37 +109,36 @@ button:hover {
 /* In-Class Projects */
 
 .classprojects {
-    display: flex;
-    flex-wrap: wrap; /* Allows wrapping of items */
-    justify-content: space-between; /* Ensures space between items */
-    margin: 100px auto;
-    padding: 0 20px;
-    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Flexible grid layout */
+    gap: 20px; /* Add spacing between cards */
+    padding: 20px; /* Ensure padding around the grid */
+    max-width: 1200px; /* Optional: Set a max width for alignment */
+    margin: auto; /* Center the grid */
+    color: #64ffda;
 }
 
 .classproject {
-    background-color: var(--light-navy);
-    border-radius: var(--border-radius);
-    padding: 30px;
-    margin: 20px;
-    width: calc(33% - 40px); /* Ensures that each project takes 1/3rd of the container */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    color: #64ffda; /* Text color */
 }
 
-/* Hover Effect */
+.classproject h4 {
+    font-size: 20px; /* Adjust font size */
+    margin-bottom: 10px; /* Space below the title */
+    color: #64ffda;
+}
+
+.classproject p {
+    font-size: 14px; /* Smaller description text */
+    line-height: 1.5; /* Better readability */
+    color: #a8b2d1; /* Softer text color */
+}
+
 .classproject:hover {
-    transform: translateY(-10px);
-}
-
-@media (max-width: 768px) {
-    .classproject {
-        width: calc(50% - 40px); /* Adjusts to 2 projects per row on medium screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .classproject {
-        width: 100%; /* Stacks projects vertically on smaller screens */
-    }
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
 }
