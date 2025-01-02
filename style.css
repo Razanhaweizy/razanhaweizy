@@ -215,7 +215,7 @@ button:hover {
 
 .options {
     display: flex;
-    gap: 1.5em;
+    gap: 1em;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 1em;
