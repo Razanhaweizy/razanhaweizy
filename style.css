@@ -149,7 +149,100 @@ button:hover {
     box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.4); 
 }
 
-.projectlayout .layoutp {
+/* Personal Projects */
+.projects {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Adjusted min-width for the cards */
+    grid-gap: 2em;
+}
+
+.project {
+    width: 100%;
+    position: relative;
+    background-color: #112240; /* Folder background color */
+    border: 1px solid #64ffda; /* Lighter border to contrast the background */
+    border-radius: 8px;
+    padding: 1em; /* Increase padding for better content spacing */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; /* Center items */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #64ffda; /* Text color */
+    position: relative;
+}
+
+/* Folder-like top flaps */
+.project::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: #112240; /* Folder top flaps color */
+    border-bottom: 1px solid #64ffda;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.project:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.project h2, .project h5 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 0.5em 0;
+    text-align: center; /* Ensure titles are centered */
+    color: #64ffda;
+    background-color: #112240;
+}
+
+.project p {
+    font-size: 0.9em;
+    line-height: 1.6;
+    text-align: center;
+    color: #a8b2d1;
+    margin-bottom: 1em;
+    background-color: #112240; /* Match text background with the folder background */
+    padding: 0.5em; /* Padding for better text spacing */
+    border-radius: 4px;
+}
+
+.options {
+    display: flex;
+    gap: 1.5em;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1em;
+    background-color: #112240;
+}
+
+.options h5 {
+    color: #64ffda;
+    font-size: 1em;
+    margin: 0;
+    font-weight: normal;
+    background-color: #112240;
+}
+
+.projects .project {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project .options h5 {
+    font-size: 0.9em;
+    font-weight: normal;
+    text-align: center;
+}
+
+.layoutp {
     color: #64ffda;
     font-size: 20px;
     font-weight: bold;
