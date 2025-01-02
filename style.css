@@ -153,28 +153,27 @@ button:hover {
 .projects {
     padding: 1em;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Adjusted min-width for the cards */
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); 
     grid-gap: 2em;
 }
 
 .project {
     width: 100%;
     position: relative;
-    background-color: #112240; /* Folder background color */
-    border: 1px solid #64ffda; /* Lighter border to contrast the background */
+    background-color: #112240; 
+    border: 1px solid #64ffda;
     border-radius: 8px;
-    padding: 1em; /* Increase padding for better content spacing */
+    padding: 1em;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center; /* Center items */
+    align-items: center; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #64ffda; /* Text color */
+    color: #64ffda; 
     position: relative;
 }
 
-/* Folder-like top flaps */
 .project::before {
     content: "";
     position: absolute;
@@ -182,7 +181,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 20px;
-    background-color: #112240; /* Folder top flaps color */
+    background-color: #112240; 
     border-bottom: 1px solid #64ffda;
     border-radius: 8px 8px 0 0;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -197,7 +196,7 @@ button:hover {
     font-size: 1.1em;
     font-weight: bold;
     margin: 0.5em 0;
-    text-align: center; /* Ensure titles are centered */
+    text-align: center; 
     color: #64ffda;
     background-color: #112240;
 }
@@ -208,8 +207,8 @@ button:hover {
     text-align: center;
     color: #a8b2d1;
     margin-bottom: 1em;
-    background-color: #112240; /* Match text background with the folder background */
-    padding: 0.5em; /* Padding for better text spacing */
+    background-color: #112240; 
+    padding: 0.5em;
     border-radius: 4px;
 }
 
@@ -251,4 +250,17 @@ button:hover {
     max-width: 80%;
     line-height: 1.5;
     font-size: 16px;
+}
+
+/* Contact */
+#contact, #contactlist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    margin-bottom: 1.5em;
+}
+
+#contact ul {
+    list-style: none;
 }
