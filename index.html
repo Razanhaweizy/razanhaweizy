@@ -1,128 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Razan Haweizy — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@87.5,200..900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a192f;
+      --panel:#112240;
+      --ink:#a8b2d1;
+      --brand:#64ffda;
+      --brand-600:#2a486b;
+      --brand-700:#1e3557;
+      --border:#1e3557;
+      --shadow:0 8px 24px rgba(0,0,0,.35);
+    }
+
+    /* Reset + base */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inconsolata", monospace;line-height:1.6}
+    a{color:var(--brand);text-decoration:none}
+    img{max-width:100%;display:block}
+    h1,h2,h3,h4,h5{color:var(--brand);margin:0 0 .5rem}
+    h1{font-size:clamp(1.8rem,3vw,2.6rem)}
+    h2{font-size:clamp(1.4rem,2.2vw,1.8rem)}
+    p{margin:.25rem 0 .75rem}
+    .container{width:min(1100px,92%);margin-inline:auto}
+
+    /* Header / Nav */
+    header{position:sticky;top:0;z-index:50;background:rgba(10,25,47,.7);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{display:flex;gap:.6rem;align-items:center;font-weight:800;color:var(--brand)}
+    .brand span{color:var(--ink)}
+    .nav-links{display:flex;gap:1rem;align-items:center}
+    .nav-links a{padding:.45rem .7rem;border-radius:999px;border:1px solid transparent}
+    .nav-links a:hover{background:var(--panel);border-color:var(--border)}
+    .nav-links a.active{border-color:var(--brand)}
+    .resume-btn{padding:.55rem 1rem;background:var(--brand-700);border:none;border-radius:999px;color:var(--brand);cursor:pointer}
+    .resume-btn:hover{background:var(--brand-600)}
+    .menu-toggle{display:none}
+
+    @media (max-width:760px){
+      .menu-toggle{display:inline-flex;background:transparent;border:1px solid var(--border);color:var(--brand);padding:.4rem .6rem;border-radius:.5rem}
+      .nav-links{position:fixed;inset:auto 0 0 0;top:56px;flex-direction:column;padding:1rem;background:rgba(10,25,47,.98);border-top:1px solid var(--border);transform:translateY(105%);transition:transform .25s ease}
+      .nav-links.open{transform:translateY(0)}
+    }
+
+    /* Sections */
+    section{scroll-margin-top:84px;padding:72px 0;border-top:1px solid rgba(100,255,218,.06)}
+    .lead{font-size:clamp(1rem,2vw,1.125rem)}
+
+    /* Home */
+    .home-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:start}
+    .home-intro{padding:1.2rem;border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg,rgba(17,34,64,.7),rgba(17,34,64,.45));box-shadow:var(--shadow)}
+    .home-intro h1{font-size:clamp(1.4rem, 2.2vw, 2rem)} /* smaller title */
+    .big-cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:1rem}
+    .big-cta a{display:flex;align-items:center;justify-content:center;padding:1rem 1.2rem;border-radius:14px;background:var(--panel);border:1px solid var(--border);font-weight:700}
+    .big-cta a:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+
+    /* Experience */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1rem;box-shadow:var(--shadow)}
+    .meta{font-size:.92rem;color:var(--ink)}
+    .chip-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+    .chip{border:1px solid var(--border);padding:.2rem .55rem;border-radius:999px;font-size:.85rem;color:var(--brand)}
+
+    /* Class Projects (original look) — reused for Projects too */
+    .classprojects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+      color: #64ffda;
+    }
+    .classproject {
+      padding: 20px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: #64ffda;
+      background-color: #112240;
+      border-radius: 8px;
+      border: 1px solid #64ffda;
+    }
+    .classproject h4 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #64ffda;
+      background-color: #112240;
+    }
+    .classproject p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #a8b2d1;
+      background-color: #112240;
+    }
+    .classproject:hover { transform: translateY(-10px); box-shadow: 0px 6px 16px rgba(0,0,0,0.4) }
+
+    /* Courses (original look) */
+    .courses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    .courses button {
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      background-color: #1e3557;
+      color: #64ffda;
+      border: none;
+      cursor: default;
+      transition: all 0.3s ease-in-out;
+      font-family: "Inconsolata", sans-serif;
+    }
+    .courses button:hover { background-color: #2a486b; color: #ffffff }
+
+    /* Contact */
+    #contact, #contactlist {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1em;
+      margin-bottom: 1.5em;
+    }
+    #contact ul { list-style: none }
+
+    /* Static Photo card + spacing from Quick Facts */
+    .photo-card{ margin-top: 24px; text-align:center }
+    .photo-card img{
+      max-width:260px;
+      width:100%;
+      aspect-ratio:1/1;
+      object-fit:cover;
+      border-radius:12px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      background:var(--panel);
+    }
+
+    footer{padding:48px 0;color:var(--ink);text-align:center;opacity:.8}
+  </style>
 </head>
 <body>
-    <header>
-        <a class="cta" href="#"><button>Resume</button></a>
-        <nav>
-            <ul class="nav_links">
-                <li><a>About me</a></li>
-                <li><a>Education</a></li>
-                <li><a>Projects</a></li>
-                <li><a>Contact</a></li>
-                <!-- <li><button>Resume</button></li> -->
-        </ul>
-    </nav>
-    </header>
-    <div id="about" class="boxlayout">
-        <h4>Hi! My name is Razan Haweizy.</h4>
-        <p>I'm currently studying at Brown University and I'm from the Kurdistan Region of Iraq. I'm interested in software engineering, fullstack development, and data analysis! I'm also into mathematics :) In my free time, I enjoy video games, crocheting, writing, and I occasionally indulge in an unserious game of basketball! I currently serve as the vice president of diversty, equity, and inclusion in the Alpha Epsilon chapter of Kappa Alpha Theta. I'm also part of Women in Computer Science, and the AI Robotics Ethics Society. And I love cats.</p>
-        <p>I'm eager to to contribute my skills and passion for mathematics and computer science and apply the intersections between the two. I have always enjoyed solving complex problems and puzzles as I enjoy the challenge, and some of my favorite classes I have taken are data structures and algorithms, multivariable calculus, and ordinary differential equations. I am proficient in Python, Java, Javascript, HTML/CSS, and I am adept at using these programming languages to develop efficient and scalable solutions to problems. Lastly, I am highly motivated by challenges and enjoy collaborative environments in which I have the opportunity to work with teammates to deliver high-quality outcomes!</p>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#home"><span>Razan Haweizy</span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <nav id="nav-links" class="nav-links" aria-label="Section links">
+        <a href="#home" class="active">Home</a>
+        <a href="#experience">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#class-projects">Class Projects</a>
+        <a href="#classes">Classes</a>
+        <a href="#contact">Contact</a>
+        <a href="public/Razan Resume copy.pdf" class="resume-btn" target="_blank" rel="noopener">Resume</a>
+      </nav>
     </div>
-    <div id="education" class=boxlayout>
-        <p>I'm a sophomore at Brown University studying computer science - applied mathematics ScB, and have maintained a GPA of 4.0. With a focus on computer science and applied math, I have also aimed to diversify my learning by taking classes in english, literary arts, and economics.</p>
-        <h4>Here are some classes I have taken at Brown!</h6>
-        <div class="courses">
-            <button>Computing Foundations: Data</button>
-            <button>Data Structure and Algorithms</button>
-            <button>Single Variable Calculus, II</button>
-            <button>Multivariable Calculus</button>
-            <button>Statistical Inference I</button>
-            <button>Linear Algebra</button>
-            <button>Applied Ordinary Differential Equations</button>
-            <button>Intermediate Macroeconomics</button>
-            <button>Introduction to Engineering: Design</button>
-            <button>Introduction to Creative Nonfiction</button>
-            <button>Writers on Writing</button>
-            <button>Essentials of the Latin Language</button>
+  </header>
+
+  <!-- HOME / ABOUT -->
+  <section id="home" class="container">
+    <div class="home-grid">
+      <div class="home-intro">
+        <h1>Hi! I’m Razan Haweizy.</h1>
+        <p class="lead">
+            I’m an Applied Math–Computer Science (Sc.B.) concentrator at Brown University, originally from the Kurdistan Region of Iraq. I love building full-stack software and bringing ideas to life through clean, scalable systems. Beyond the classroom, I tutor at the Sheridan Center for Teaching and Learning and serve as Vice President of Diversity, Equity, and Inclusion for Kappa Alpha Theta.
+          </p>
+          <p class="lead">
+            I thrive in collaborative, fast-paced environments where I can transform complex or ambiguous specifications into well-designed solutions. I’m comfortable working across the stack with Python, Java, C, JavaScript/TypeScript, and HTML/CSS/Tailwind CSS. I’m motivated by challenges and energized by teamwork, always looking for opportunities to deliver high-quality outcomes that have impact.
+          </p>          
+        <div class="big-cta" aria-label="Quick section links">
+          <a href="#experience">See Work Experience ↗</a>
+          <a href="#projects">Personal Projects ↗</a>
+          <a href="#class-projects">Class Projects ↗</a>
+          <a href="#classes">Courses I’ve Taken ↗</a>
+          <a href="#contact">Contact Me ↗</a>
         </div>
+      </div>
+      <div>
+        <div class="card">
+          <h2>More about me!</h2>
+          <ul>
+            <li>I love cats! I've raised 6 cats before</li>
+            <li>I really enjoy video games (especially soulsborne), and love to crochet/knit/read in my free time</li>
+            <li>My passion is to build tech that drives positive change</li>
+          </ul>
+         
+        <!-- Static Photo card (replace headshot.jpg with your file) -->
+        <img src="kitty.png" alt="Razan Haweizy headshot" />
+      </div>
     </div>
-    <div class="projectlayout">
-        <p class="layoutp">In addition to my classes, I have built and implemented projects in those classes that have taught me in depth about not only time and space efficiency, but also the intricacies of data structures and good program design. Here are some of my favorite in-class projects that I have done and thoroughly enjoyed!</p>
-        <div class="classprojects">
-            <div class="classproject">
-                <h4>Sharing Information</h4>
-                <p>This project is a messaging system that stores messages in text files with metadata for efficient management. I implemented features for handling storage, automatic deletion of outdated messages, and merging files when needed to optimize performance. The system ensures that messages are organized and accessible while maintaining scalability.</p>
-            </div>
-            <div class="classproject">
-                <h4>Decision Tree</h4>
-                <p>This was a group project that I collaborated on. I developed a decision tree model to assist with decision-making processes by evaluating various input attributes. The project focused on using decision trees to structure and analyze data, making predictions based on multiple factors. I implemented data preprocessing, feature selection, and model evaluation techniques to ensure the model’s accuracy and adaptability across diverse scenarios.</p>
-            </div>
-            <div class="classproject">
-                <h4>GraphQuest</h4>
-                <p>This project explores graph data structures and their practical applications. I implemented a new graph representation, EdgeArrayGraph, that adheres to a generic interface. Additionally, I applied breadth-first search (BFS) to find the shortest paths between nodes and planned for using graphs to manage schedule conflicts. The project emphasizes both conceptual understanding and effective testing strategies.</p>
-            </div>
-            <div class="classproject">
-                <h4>Pandas</h4>
-                <p>This project focused on maintaining and analyzing patient visit data at medical clinics, utilizing pandas for data manipulation. I worked on cleaning and normalizing patient information from CSV files, updating patient and visit records, and producing data visualizations to track key health metrics. Additionally, I wrote tests to ensure data accuracy and the proper functionality of data processing functions.</p>
-            </div>
-            <div class="classproject">
-                <h4>Totally Tubular Tables</h4>
-                <p>For this project, I analyzed the density of grocery and convenience stores in various counties across the USA. I worked with multiple datasets to calculate statistics such as the variability of stores across counties and the relationship between population size and store density. I also implemented a summary-generator function that takes in data and computes flexible statistics like the mean or total for different store categories, helping to answer key analysis questions with the datasets provided.</p>
-            </div>
-            <div class="classproject">
-                <h4>Frog Maze Craze</h4>
-                <p>In this partner project, I developed a maze game where the player controls a frog navigating through a maze of water and grass tiles. The bee collects widgets that affect stamina or portals that allow teleportation, while avoiding running out of stamina or getting stuck. I implemented the game logic using recursion, datatypes, and a reactor model, and used spreadsheets to configure the maze layout and item placements, creating an interactive and engaging gameplay experience.</p>
-            </div>
-        </div>
+  </section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+    <div class="container">
+      <h2>Work + Leadership + Volunteering</h2>
+      <div class="cards">
+  
+        <article class="card">
+          <h3>Software Developer — Contractor</h3>
+          <div class="meta">Fenchurch Solutions Inc.</div>
+          <p>I am designing and building a royalties automation platform for a book press using FastAPI and SQLAlchemy. I have architected a relational database schema covering authors, books, sales, vendors, and licensing, and implemented efficient CRUD operations. I also developed a YAML-driven ingestion pipeline with PostgreSQL and JWT-based authentication to ensure secure, scalable workflows.</p>
+          <div class="chip-row">
+            <span class="chip">FastAPI</span><span class="chip">SQLAlchemy</span><span class="chip">PostgreSQL</span><span class="chip">Pydantic</span>
+          </div>
+        </article>
+  
+        <article class="card">
+          <h3>Tutor — Multivariable Calculus</h3>
+          <div class="meta">Brown University · Sheridan Center for Teaching and Learning</div>
+          <p>I tutor students in vector calculus, optimization, and real-world applications. I focus on breaking down complex problems into clear steps, helping students build both intuition and confidence in their mathematical reasoning.</p>
+          <div class="chip-row"><span class="chip">Teaching</span><span class="chip">LaTeX</span></div>
+        </article>
+  
+        <article class="card">
+          <h3>Vice President of Diversity, Equity & Inclusion</h3>
+          <div class="meta">Kappa Alpha Theta — Alpha Epsilon</div>
+          <p>I lead DEI programming and initiatives for my chapter. I organize workshops, facilitate discussions, and build engagement metrics to create an inclusive environment that fosters belonging and growth for all members.</p>
+          <div class="chip-row"><span class="chip">Leadership</span><span class="chip">Program Design</span></div>
+        </article>
+  
+        <article class="card">
+          <h3>Volunteer — BRYTE (Brown Refugee Youth Tutoring & Enrichment)</h3>
+          <div class="meta">Brown University</div>
+          <p>I supported refugee youth and families as they transition to life in the U.S. I helped students learn English, navigate the school system, and build foundational academic skills, while also providing mentorship to ease cultural adjustment and foster independence.</p>
+          <div class="chip-row"><span class="chip">Mentorship</span><span class="chip">ESL Tutoring</span><span class="chip">Community Engagement</span></div>
+        </article>
+  
+      </div>
     </div>
-    <p class="layoutp">Some of my projects!</p>
-    <div class="projects">
-        <div class="project">
-            <h2 class="name">Rock, Paper, Scissors Game</h2>
-            <p class="description">Developed an interactive Rock, Paper, Scissors game using HTML, CSS, and JavaScript. Implemented dynamic gameplay and user-friendly design.</p>
-            <div class="options">
-                <h5>JavaScript</h5>
-                <h5>HTML/CSS</h5>
-            </div>
+  </section>
+
+<!-- PROJECTS (now using the same style as Class Projects) -->
+<section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="classprojects">
+  
+        <div class="classproject">
+            <h4>Foodgram — Full-Stack Recipe Sharing Platform</h4>
+            <p>Developed a full-stack social platform for sharing and discovering recipes with a FastAPI backend and PostgreSQL database. Designed a normalized relational schema supporting users, recipes, likes, comments, and saved recipes for scalable data consistency.</p>
+            <p>Implemented secure user flows (signup, login, posting, saving, liking) with JWT-based authentication and integrated frontend with REST APIs. Containerized with Docker, laying the groundwork for scalable cloud deployment.</p>
+            <p><strong>Tech:</strong> FastAPI • PostgreSQL • SQLAlchemy • JWT Auth • Docker</p>
+          </div>
+
+          <div class="classproject">
+            <h4>21 — Blackjack Assistant (YOLOv8 + DBSCAN)</h4>
+            <p>Real-time blackjack assistant that ingests live video and overlays the optimal move from basic strategy. Retrained a YOLOv8 detector on playing-card data to localize ranks/suits, then separated player vs. dealer cards with <em>DBSCAN</em> clustering on card centroids (fallback to farthest-point heuristic). Rendered running totals and recommended action directly on the frame.</p>
+            <p><strong>Highlights:</strong> live video I/O, object detection fine-tuning, strategy engine, clustering for spatial disambiguation, on-screen visualization.</p>
+            <p><strong>Tech:</strong> Python, YOLOv8 (Ultralytics), OpenCV, NumPy, DBSCAN</p>
+          </div>
+    
+        <div class="classproject">
+          <h4>Taylor Series — Alternate Method</h4>
+          <p>Implementation of an alternative Taylor-series computation method inspired by Meer Zozik; explored numerical stability and convergence behavior on common test functions.</p>
+          <p><strong>Tech:</strong> Python</p>
         </div>
-        <div class="project">
-            <h2 class="name">Warjera Discord Bot</h2>
-            <p class="description">A discord bot that can translate texts between English and Kurdish, my native language :)</p>
-            <div class="options">
-                <h5>Python</h5>
-                <h5>APIs</h5>
-                <h5>LLMs</h5>
-            </div>
+  
+        <div class="classproject">
+          <h4>Warjera — Discord Bot</h4>
+          <p>Discord bot that translates between English and Kurdish and experiments with LLM-assisted flows. Commands, error handling, and rate-limit friendly API calls.</p>
+          <p><strong>Tech:</strong> Python, APIs, LLMs</p>
         </div>
-        <div class="project">
-            <h2 class="name">Shell</h2>
-            <p class="description">My own implementation of a command line shell from scratch!</p>
-            <div class="options">
-                <h5>Fill this out later</h5>
-            </div>
-        </div>
-        <div class="project">
-            <h2 class="name">Taylor Series Calculator - Alternate Method</h2>
-            <p class="description">An implementation of an alternative method to calculate Taylor series, based on Meer Zozik's work.</p>
-            <div class="options">
-                <h5>Python</h5>
-                <h5>Python Libraries</h5>
-            </div>
-        </div>
-        <div class="project">
-            <h2 class="name">Student Organizer</h2>
-            <p class="description">An organizer built for students to manage their studies and tasks!</p>
-            <div class="options">
-                <h5>JavaScript</h5>
-                <h5>APIs</h5>
-                <h5>HTML/CSS</h5>
-            </div>
-        </div>
-    </div>    
-    <p class="layoutp">Contact me!</p>
-    <div id="contact">
-        <ul id="contactList">
-            <li>Personal Email: <a href="mailto: razanrh05@gmail.com" target="_blank">razanrh05@gmail.com</a></li>
-            <li>School Email: <a href="mailto:razan_haweizy@brown.edu" target="_blank">razan_haweizy@brown.edu</a></li>
-            <li>Linkedin: <a href="https://www.linkedin.com/in/razan-haweizy-29b37b288/" target="_blank">Razan Haweizy</a></li>
-            <li>Github: <a href="https://github.com/Razanhaweizy" target="_blank">Razanhaweizy</a></li>
-        </ul>
+  
+      </div>
     </div>
+  </section>
+  
+
+<!-- CLASS PROJECTS (updated & polished) -->
+<section id="class-projects">
+    <div class="container">
+      <h2>Class Projects</h2>
+      <div class="classprojects">
+  
+        <!-- Systems: OS / C / Memory -->
+        <div class="classproject">
+          <h4>WeensyOS — Tiny OS (C)</h4>
+          <p>Built core OS components in C: process creation, context switching, basic scheduling, and virtual memory mechanics with page tables and isolation. Implemented low-level debugging and kernel/user boundary checks.</p>
+        </div>
+  
+        <div class="classproject">
+          <h4>DMalloc — Custom Memory Allocator (C)</h4>
+          <p>Implemented a malloc/free allocator with block headers, alignment, free-list management, and coalescing to reduce fragmentation. Added guard bytes and validation to detect overruns/double-frees during stress tests.</p>
+        </div>
+  
+        <div class="classproject">
+          <h4>CachingIO — Userspace I/O Cache (C)</h4>
+          <p>Designed a read/write caching layer with LRU eviction and write-back buffering for improved throughput under mixed workloads. Focus on concurrency safety and contention reduction across hot paths.</p>
+        </div>
+  
+        <div class="classproject">
+          <h4>Snake — Systems Edition (C)</h4>
+          <p>Terminal game with precise input handling and timer-driven updates. Emphasized clean state machines, bounded latency, and portable build tooling (Make, sanitizers).</p>
+        </div>
+  
+        <!-- Vision / ML -->
+        <div class="classproject">
+          <h4>Scene Recognition with CNNs (TensorFlow)</h4>
+          <p>End-to-end CNN for 15-way scene classification: standardization, on-the-fly data augmentation, and dropout regularization. Used TensorBoard for training curves and checkpoints; analyzed failure cases with LIME explanations. Also fine-tuned a VGG-style backbone with frozen weights and a custom classification head.</p>
+        </div>
+  
+        <div class="classproject">
+          <h4>Classical Vision Pipeline — Bag of Words + SVM</h4>
+          <p>Implemented tiny-images baseline, then Bag-of-Words with feature extraction and k-means vocabulary. Trained a one-vs-all linear SVM; produced confusion matrices and results webpages for error analysis and per-class performance.</p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- CLASSES (original look) -->
+  <section id="classes">
+    <div class="container">
+      <h2>Some Classes I've Taken!</h2>
+      <div class="courses">
+        <button>Computer Vision</button>
+        <button>Data Structures and Algorithms</button>
+        <button>Computer Systems Fundamentals</button>
+        <button>Real-time + Embedded Software</button>
+        <button>Software Security and Exploitation</button>
+        <button>Multivariable Calculus</button>
+        <button>Statistical Inference I</button>
+        <button>Linear Algebra</button>
+        <button>Applied Partial Differential Equations</button>
+        <button>Operations Research: Deterministic Models</button>
+        <button>Intermediate Macroeconomics</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <ul id="contactList">
+        <li>Personal Email: <a href="mailto:razanrh05@gmail.com" target="_blank">razanrh05@gmail.com</a></li>
+        <li>School Email: <a href="mailto:razan_haweizy@brown.edu" target="_blank">razan_haweizy@brown.edu</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/razan-haweizy-29b37b288/" target="_blank" rel="noopener">Razan Haweizy</a></li>
+        <li>GitHub: <a href="https://github.com/Razanhaweizy" target="_blank" rel="noopener">Razanhaweizy</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Razan Haweizy</div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle?.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    // Active link highlighting on scroll
+    const navAnchors = [...document.querySelectorAll('.nav-links a')].filter(a => a.hash);
+    const sections = navAnchors.map(a => document.querySelector(a.hash)).filter(Boolean);
+
+    const onScroll = () => {
+      const y = window.scrollY + 100;
+      let current = navAnchors[0];
+      sections.forEach((sec, i) => {
+        if (sec.offsetTop <= y) current = navAnchors[i];
+      });
+      navAnchors.forEach(a => a.classList.toggle('active', a === current));
+    };
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

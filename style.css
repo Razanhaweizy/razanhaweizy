@@ -150,6 +150,7 @@ button:hover {
 }
 
 /* Personal Projects */
+
 .projects {
     padding: 1em;
     display: grid;
@@ -253,6 +254,7 @@ button:hover {
 }
 
 /* Contact */
+
 #contact, #contactlist {
     display: flex;
     justify-content: center;
